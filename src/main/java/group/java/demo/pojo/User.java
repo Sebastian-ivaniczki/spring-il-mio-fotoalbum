@@ -18,6 +18,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+@SuppressWarnings("serial")
 @Entity
 public class User implements UserDetails {
 
