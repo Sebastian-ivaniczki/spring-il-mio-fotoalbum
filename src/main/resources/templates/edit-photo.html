@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	
+		<main style="margin: 50px;" th:object="${photo}">
+			<h1 style="text-align: center;">Photo Album (edit)</h1>
+			
+			<form th:action="@{/admin/photo/update/{id} (id=${photo.id})}" method="POST">
+				<label for="photo-title">title</label>
+				<input id="photo-title" type="text" name="title" th:value="*{title}">
+				
+				
+				<br>
+				
+				<label for="photo-description">Description</label>
+				<textarea id="photo-description" rows="10" cols="20" name="description">[[*{description}]]</textarea>
+				
+				<br>
+				
+				<label for="photo-url">url</label>
+				<input id="photo-url" type="url" name="url" th:value="*{url}">
+				
+				<br>
+				
+				<label for="photo-visible">visibility</label>
+				<input id="photo-visible" type="checkbox" name="visibility" th:checked="*{visibility}">
+				
+				
+				<br>
+				
+				<div th:each="category : ${categories}" th:object="${category}">
+					<input th:id="${'category-' + category.id}" type="checkbox" th:value="*{id}" name="categories" th:checked="${photo.categories.contains(category)}">
+					<label th:id="${'category-' + category.id}">[[ *{name} ]]</label>
+				</div>
+				
+				<br>
+				
+				<button>Update!</button>
+			</form>
+		</main>
+	</body>
+</html>

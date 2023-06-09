@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<main style="margin: 50px;">
+			<h1 style="text-align: center;">Photo Album (create)</h1>
+			
+			<form th:action="@{/admin/photo/store}" method="POST">
+				<label for="photo-title">TItle</label>
+				<input id="photo-title" type="text" name="title">
+				
+				
+				<br>
+				
+				<label for="photo-description">Description</label>
+				<textarea id="photo-description" rows="10" cols="20" name="description"></textarea>
+				
+				<br>
+				
+				<label for="photo-url">url img</label>
+				<input id="photo-url" type="url" name="url">
+				
+				<br>
+				
+				<label for="photo-visible">visibility</label>
+				<input id="photo-visible" type="checkbox" name="visibility">
+				
+				
+				<br>
+				
+				<div th:each="category : ${categories}" th:object="${category}">
+					<input th:id="${'category-' + category.id}" type="checkbox" th:value="*{id}" name="categories">
+					<label th:id="${'category-' + category.id}">[[ *{name} ]]</label>
+				</div>
+				
+				<br>
+				
+				<button>Create</button>
+			</form>
+		</main>
+	</body>
+</html>

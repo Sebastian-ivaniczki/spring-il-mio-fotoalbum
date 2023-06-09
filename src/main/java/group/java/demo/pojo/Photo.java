@@ -1,7 +1,8 @@
 package group.java.demo.pojo;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Arrays;
+import java.util.List;
+
 
 
 import jakarta.persistence.Entity;
@@ -22,7 +23,7 @@ public class Photo {
 	private boolean visibility;
 	
 	  @ManyToMany
-	    private Set<Categorie> categories = new HashSet<>();
+	    private List<Categorie> categories;
 	
 	public Photo() {}
 	
@@ -31,6 +32,11 @@ public class Photo {
 		setDescription(description);
 		setUrl(url);
 		setVisibility(visibility);
+	}
+	
+	public Photo(String title, String description, String url, Boolean visible, Categorie... categories) {
+		this(title, description, url, visible);
+		setCategories(categories);
 	}
 	//getter and setter
 	public Integer getId() {
@@ -73,12 +79,19 @@ public class Photo {
 		this.visibility = visibility;
 	}
 
-	public Set<Categorie> getCategories() {
+	public List<Categorie> getCategories() {
 		return categories;
 	}
 
-	public void setCategories(Set<Categorie> categories) {
+	public void setCategories(List<Categorie> categories) {
 		this.categories = categories;
+	}
+	
+	public void setCategories(Categorie[] categories) {
+		setCategories(Arrays.asList(categories));
+	}
+	public void removeCategory(Categorie categorie) {
+		getCategories().remove(categorie);		
 	}
 	
 	
