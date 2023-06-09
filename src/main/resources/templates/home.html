@@ -31,7 +31,7 @@
 			            <h5 class="card-title" th:text="${photo.title}"></h5>
 			            <p class="card-text" th:text="${photo.description}"></p>
 			           <a class="btn btn-primary" th:href="@{/admin/photo/edit/{id} (id=${photo.id})}" sec:authorize="hasAuthority('ADMIN')">EDIT</a>
-			           <a class="btn btn-primary" th:href="@{/admin/photo/{id} (id=${photo.id})}" sec:authorize="hasAuthority('ADMIN')">SHOW</a>
+			           <a class="btn btn-primary" th:href="@{/user/photo/{id} (id=${photo.id})}" sec:authorize="hasAuthority('USER') || hasAuthority('ADMIN')">SHOW</a>
 			           <a class="btn btn-danger" th:href="@{admin/photo/delete/{id} (id=${photo.id})}" sec:authorize="hasAuthority('ADMIN')">DELETE</a>
 			        </div>
 			    </div>

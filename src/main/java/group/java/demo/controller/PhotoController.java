@@ -27,7 +27,7 @@ public class PhotoController {
 	private CategorieService categorieService;
 	
 	
-	@GetMapping("admin/photo/{id}")
+	@GetMapping("/user/photo/{id}")
 	public String show(@PathVariable("id") Integer id, Model model) {
 		
 		Optional<Photo> photoOpt = photoService.findById(id);
