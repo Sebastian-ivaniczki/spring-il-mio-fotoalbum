@@ -10,4 +10,6 @@ import group.java.demo.pojo.Photo;
 @Repository
 public interface PhotoRepo extends JpaRepository<Photo, Integer> {
 	public List<Photo> findByTitleContaining(String title);
+
+	public List<Photo> findByVisibilityTrue();
 }

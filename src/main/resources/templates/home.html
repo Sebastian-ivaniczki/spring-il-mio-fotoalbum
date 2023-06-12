@@ -21,6 +21,7 @@
 </nav>
 
  <a th:href="@{/admin/photo/create}" class="btn btn-primary" sec:authorize="hasAuthority('ADMIN')">Add new photo</a>
+ <a th:href="@{/admin/categorie}" class="btn btn-primary" sec:authorize="hasAuthority('ADMIN')">Show Categorie</a>
 
 	<div sec:authorize="hasAuthority('USER') || hasAuthority('ADMIN')">
 		<div class="container mt-4 d-flex" >

@@ -34,4 +34,9 @@ public class PhotoService {
 		photoRepo.delete(photo);
 		
 	}
+
+	public List<Photo> findByVisibilityTrue() {
+		
+		return photoRepo.findByVisibilityTrue();
+	}
 }

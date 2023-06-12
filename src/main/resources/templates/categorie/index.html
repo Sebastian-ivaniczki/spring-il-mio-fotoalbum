@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+<title>Insert title here</title>
+</head>
+<body>
+
+<nav class="navbar bg-light">
+  <div class="container-fluid">
+    <a class="btn btn-primary"
+		href="/login"
+		sec:authorize="!isAuthenticated()"
+	>LOGIN</a>
+	<a
+		href="/login"
+		sec:authorize="hasAuthority('USER') || hasAuthority('ADMIN')"
+	>LOGOUT</a>
+  </div>
+</nav>
+
+<a th:href="@{/admin/categorie/create}" class="btn btn-primary" sec:authorize="hasAuthority('ADMIN')">Add Categorie</a>
+
+
+ <ul>
+  	<li th:each="category : ${categories}" th:object="${category}">
+	[[ *{name} ]] <a th:href="@{/admin/categorie/delete/{id} (id = *{id})}" sec:authorize="hasAuthority('ADMIN')">DELETE</a>
+	</li>		
+ </ul>
+	
+</body>
+</html>
+	

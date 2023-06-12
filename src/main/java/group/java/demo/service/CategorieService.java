@@ -27,4 +27,8 @@ public class CategorieService {
 	public Optional<Categorie> findById(Integer id){
 		return categorieRepo.findById(id);
 	}
+	public void delete(Categorie category) {
+		
+		categorieRepo.delete(category);
+	}
 }

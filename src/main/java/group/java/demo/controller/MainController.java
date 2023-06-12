@@ -16,6 +16,9 @@ public class MainController {
 	
 	@Autowired
 	private PhotoService photoService;
+	
+	
+	
 	@GetMapping("/")
 	public String getGuestHome(Model model) {
 		List<Photo> photos = photoService.findAll();

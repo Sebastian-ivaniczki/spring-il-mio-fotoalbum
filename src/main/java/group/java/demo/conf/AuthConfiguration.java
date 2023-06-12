@@ -20,11 +20,11 @@ public class AuthConfiguration {
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 	    
 		return 
-			http.authorizeHttpRequests(a -> a
+			http.csrf(c->c.disable()).authorizeHttpRequests(a -> a
 			        .requestMatchers("/users/**").hasAnyAuthority("USER", "ADMIN")
 			        .requestMatchers("/photo/**").hasAuthority("USER")
 			        .requestMatchers("/admin/**").hasAuthority("ADMIN")
-			        .requestMatchers("/**").permitAll()
+			        .requestMatchers("/**", "/api/**").permitAll()
 			).formLogin(f -> f.permitAll()
 			).logout(l -> l.logoutSuccessUrl("/")
 			).build();

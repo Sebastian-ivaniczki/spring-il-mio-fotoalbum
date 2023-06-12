@@ -3,27 +3,31 @@ package group.java.demo.pojo;
 import java.util.Arrays;
 import java.util.List;
 
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Photo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+	@NotBlank
 	private String title;
+	@NotBlank
 	private String description;
+	@NotBlank
 	private String url;
 	private boolean visibility;
 	
-	  @ManyToMany
-	    private List<Categorie> categories;
+	@ManyToMany
+	@JsonManagedReference
+	private List<Categorie> categories;
 	
 	public Photo() {}
 	
