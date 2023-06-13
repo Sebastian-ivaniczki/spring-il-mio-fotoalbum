@@ -21,7 +21,7 @@ public class Photo {
 	private String title;
 	@NotBlank
 	private String description;
-	@NotBlank
+	
 	private String url;
 	private boolean visibility;
 	
